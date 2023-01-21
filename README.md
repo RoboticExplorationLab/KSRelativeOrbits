@@ -24,28 +24,38 @@ julia> include("scripts/SCRIPT_NAME.jl")
 
 The scripts and related figures are shown below for reference.
 
-### Figure 1: Cartesian to KS transform smoothness
-![](figs/png/cart_to_ks_transform_smoothness.png | width=200)
+## Figure 1: Cartesian to KS transform smoothness
+<img src="figs/png/cart_to_ks_transform_smoothness.png" width="400">
+
 ```
 julia> include("scripts/cart_to_ks_transform_smoothness.jl")
 julia> include("scripts/plot_cart_to_ks_transform_smoothness.jl")
 ```
 
-### Figure 2: RMS position error comparisons
-![](figs/png/rms_trajectory_error.png | width=400)
+## Figure 2: RMS position error comparisons
+<img src="figs/png/rms_trajectory_error.png" width="600">
+
 ```
 julia> include("scripts/rms_trajectory_error_comparison.jl")
 julia> include("scripts/plot_rms_trajectory_error_comparison.jl")
 ```
 
-### Figure 3: Low thrust rendezvous maneuver
-![](figs/png/low_thrust_rendezvous_quad.png | width=400)
+## Figure 3: Low thrust rendezvous maneuver
+<img src="figs/png/low_thrust_rendezvous_quad.png" width="600">
+
 ```
 julia> include("scripts/low_thrust_rendezvous_perturbed.jl")
 julia> include("scripts/plot_low_thrust_rendezvous.jl")
 ```
 
 
-## Citation:
+# Citation:
 ```
+@inproceedings{willis_ks_transform_2023,
+    title={{Convex Optimization of Relative Orbit Maneuvers Using the Kustaanheimo-Stiefel Transformation}},
+    author={Willis, Jacob B and Manchester, Zachary},
+    booktitle={2023 IEEE Aerospace Conference},
+    year={2023},
+    organization={IEEE}
+}
 ```
