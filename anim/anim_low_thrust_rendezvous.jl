@@ -62,4 +62,4 @@ delete!(vis)
 ####
 # To save Animation, use  Animations > Recording > record in the viewer
 # To convert animation frames to mp4, 
-# ffmpeg -r 60 -i %07d.png -vcodec libx264 -pix_fmt yuv420p -preset slow -crf 18 ../rendezvous_animation.mp4
+# ffmpeg -r 240 -i %07d.png -vcodec libx264 -pix_fmt yuv420p -preset slow -crf 18 ../rendezvous_animation.mp4
