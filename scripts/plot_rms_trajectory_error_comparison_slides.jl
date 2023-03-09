@@ -85,7 +85,7 @@ p_M(opacities) = @pgf Axis(
     PlotInc({lineopts..., opacity = opacities[1], color = color_CW}, Coordinates(rad2deg.(ΔM_range), pos_err_M_cw)),
     PlotInc({lineopts..., opacity = opacities[2], color = color_YA, style = "dashed"}, Coordinates(rad2deg.(ΔM_range), pos_err_M_ya)),
     PlotInc({lineopts..., opacity = opacities[3], color = color_KGD, style = "dashed"}, Coordinates(rad2deg.(ΔM_range), pos_err_M_kgd)),
-    PlotInc({lineopts..., opacity = opacities[4], color = color_LIN, style = "dotted"}, Coordinates(rad2deg.(ΔM_range), pos_err_M_lin)),
+    # PlotInc({lineopts..., opacity = opacities[4], color = color_LIN, style = "dotted"}, Coordinates(rad2deg.(ΔM_range), pos_err_M_lin)),
     PlotInc({lineopts..., opacity = opacities[5], color = color_KS}, Coordinates(rad2deg.(ΔM_range), pos_err_M_ks)),
 )
 
@@ -108,7 +108,7 @@ p_i(opacities) = @pgf Axis(
     PlotInc({lineopts..., opacity = opacities[1], color = color_CW}, Coordinates(rad2deg.(Δi_range), pos_err_i_cw)),
     PlotInc({lineopts..., opacity = opacities[2], color = color_YA, style = "dashed"}, Coordinates(rad2deg.(Δi_range), pos_err_i_ya)),
     PlotInc({lineopts..., opacity = opacities[3], color = color_KGD, style = "dashed"}, Coordinates(rad2deg.(Δi_range), pos_err_i_kgd)),
-    PlotInc({lineopts..., opacity = opacities[4], color = color_LIN, style = "dotted"}, Coordinates(rad2deg.(Δi_range), pos_err_i_lin)),
+    # PlotInc({lineopts..., opacity = opacities[4], color = color_LIN, style = "dotted"}, Coordinates(rad2deg.(Δi_range), pos_err_i_lin)),
     PlotInc({lineopts..., opacity = opacities[5], color = color_KS}, Coordinates(rad2deg.(Δi_range), pos_err_i_ks)),
 )
 p_i_cw = p_i([1, 0, 0, 0, 0])
@@ -128,7 +128,7 @@ p_e(opacities) = @pgf LogLogAxis(
     PlotInc({lineopts..., opacity = opacities[1], color = color_CW}, Coordinates(Δe_range, pos_err_e_cw)),
     PlotInc({lineopts..., opacity = opacities[2], color = color_YA, style = "dashed"}, Coordinates(Δe_range, pos_err_e_ya)),
     PlotInc({lineopts..., opacity = opacities[3], color = color_KGD, style = "dashed"}, Coordinates(Δe_range, pos_err_e_kgd)),
-    PlotInc({lineopts..., opacity = opacities[4], color = color_LIN, style = "dotted"}, Coordinates(Δe_range, pos_err_e_lin)),
+    # PlotInc({lineopts..., opacity = opacities[4], color = color_LIN, style = "dotted"}, Coordinates(Δe_range, pos_err_e_lin)),
     PlotInc({lineopts..., opacity = opacities[5], color = color_KS}, Coordinates(Δe_range, pos_err_e_ks)),
 )
 p_e_cw = p_e([1, 0, 0, 0, 0])
@@ -149,9 +149,9 @@ p_a(opacities; withlegend=false) = @pgf Axis(
     PlotInc({lineopts..., opacity = opacities[1], color = color_CW}, Coordinates(Δa_range / 1000, pos_err_a_cw)),
     PlotInc({lineopts..., opacity = opacities[2], color = color_YA, style = "dashed"}, Coordinates(Δa_range / 1000, pos_err_a_ya)),
     PlotInc({lineopts..., opacity = opacities[3], color = color_KGD, style = "dashed"}, Coordinates(Δa_range / 1000, pos_err_a_kgd)),
-    PlotInc({lineopts..., opacity = opacities[4], color = color_LIN, style = "dotted"}, Coordinates(Δa_range / 1000, pos_err_a_lin)),
+    # PlotInc({lineopts..., opacity = opacities[4], color = color_LIN, style = "dotted"}, Coordinates(Δa_range / 1000, pos_err_a_lin)),
     PlotInc({lineopts..., opacity = opacities[5], color = color_KS}, Coordinates(Δa_range / 1000, pos_err_a_ks)),
-    withlegend ? Legend(["CW", "YA", "KGD", "LIN", "KS"]) : Legend()
+    withlegend ? Legend(["CW", "YA", "KGD", "KS"]) : Legend()
 )
 p_a_cw = p_a([1, 0, 0, 0, 0])
 p_a_ya = p_a([1, 1, 0, 0, 0])

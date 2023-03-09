@@ -7,7 +7,7 @@ using Colors
 using LinearAlgebra
 
 # Save plots as png or tikz
-SAVEAS_PNG = true
+SAVEAS_PDF = true
 
 color_list = distinguishable_colors(6, [RGB(1, 1, 1), RGB(0, 0, 0)], dropseed=true)
 const color_main = color_list[2]
@@ -99,12 +99,12 @@ p_RN = @pgf Axis(
 }
 @pgf gp = GroupPlot(groupopts, p_err, p_controls, p_RT, p_RN)
 
-if SAVEAS_PNG
-    pgfsave(joinpath("figs", "png", "low_thrust_rendezvous_position_error.png"), p_err, dpi=300)
-    pgfsave(joinpath("figs", "png", "low_thrust_rendezvous_controls.png"), p_controls, dpi=300)
-    pgfsave(joinpath("figs", "png", "low_thrust_rendezvous_radial_tangential.png"), p_RT, dpi=300)
-    pgfsave(joinpath("figs", "png", "low_thrust_rendezvous_radial_normal.png"), p_RN, dpi=300)
-    pgfsave(joinpath("figs", "png", "low_thrust_rendezvous_quad.png"), gp, dpi=300)
+if SAVEAS_PDF
+    pgfsave(joinpath("figs", "pdf", "low_thrust_rendezvous_position_error.pdf"), p_err, dpi=300)
+    pgfsave(joinpath("figs", "pdf", "low_thrust_rendezvous_controls.pdf"), p_controls, dpi=300)
+    pgfsave(joinpath("figs", "pdf", "low_thrust_rendezvous_radial_tangential.pdf"), p_RT, dpi=300)
+    pgfsave(joinpath("figs", "pdf", "low_thrust_rendezvous_radial_normal.pdf"), p_RN, dpi=300)
+    pgfsave(joinpath("figs", "pdf", "low_thrust_rendezvous_quad.pdf"), gp, dpi=300)
 else
     pgfsave(joinpath("figs", "low_thrust_rendezvous.tikz"), gp, include_preamble=false)
 end

@@ -8,7 +8,7 @@ using LinearAlgebra
 
 SAVEAS_PNG = true
 
-color_list = distinguishable_colors(6, [RGB(1, 1, 1), RGB(0, 0, 0)], dropseed=true)
+color_list = distinguishable_colors(6, [RGB(1, 1, 1), RGB(0, 0, 0)], dropseed=true, transform=deuteranopic)
 const def_linewidth = "ultra thick"
 const color_fixed = color_list[4]
 const color_newton = color_list[2]
