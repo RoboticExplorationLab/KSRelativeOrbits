@@ -35,7 +35,7 @@ function osc_to_scaled(x_osc, d_scale, t_scale)
     return x_scaled
 end
 
-# chief orbit (500km equatorial)
+# chief orbit
 sma_c = 750e3 + SD.R_EARTH # semi-major axis
 e_c = 0.0 # eccentricity
 i_c = deg2rad(98.2) # inclination
