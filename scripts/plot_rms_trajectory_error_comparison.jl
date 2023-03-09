@@ -7,7 +7,7 @@ using Colors
 using LinearAlgebra
 
 # Save plots as png or tikz
-SAVEAS_PNG = true
+SAVEAS_PNG = false
 
 color_list = distinguishable_colors(6, [RGB(1, 1, 1), RGB(0, 0, 0)], dropseed=true)
 const def_linewidth = "ultra thick"
@@ -155,5 +155,6 @@ if SAVEAS_PNG
     pgfsave(joinpath("figs", "png", "rms_trajectory_error.png"), gp, dpi=300)
 else
     pgfsave(joinpath("figs", "rms_trajectory_error.tikz"), gp, include_preamble=false)
+    pgfsave(joinpath("figs", "png", "rms_trajectory_error.png"), gp, dpi=300)
 end
 
