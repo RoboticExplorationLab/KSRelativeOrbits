@@ -6,7 +6,7 @@ using LaTeXStrings
 using Colors
 using LinearAlgebra
 
-SAVEAS_PNG = true
+SAVEAS_PDF = true
 
 color_list = distinguishable_colors(6, [RGB(1, 1, 1), RGB(0, 0, 0)], dropseed=true, transform=deuteranopic)
 const def_linewidth = "ultra thick"
@@ -44,7 +44,7 @@ p = @pgf Axis(
 )
 
 if SAVEAS_PNG
-    pgfsave(joinpath("figs", "png", "cart_to_ks_transform_smoothness.png"), p, dpi=300)
+    pgfsave(joinpath("figs", "pdf", "cart_to_ks_transform_smoothness.pdf"), p, dpi=300)
 else
     pgfsave(joinpath("figs", "cart_to_ks_transform_smoothness.tikz"), p, include_preamble=false)
 end

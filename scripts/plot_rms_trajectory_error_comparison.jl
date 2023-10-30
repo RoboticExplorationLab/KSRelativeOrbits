@@ -156,5 +156,6 @@ if SAVEAS_PNG
 else
     pgfsave(joinpath("figs", "rms_trajectory_error.tikz"), gp, include_preamble=false)
     pgfsave(joinpath("figs", "png", "rms_trajectory_error.png"), gp, dpi=300)
+    pgfsave(joinpath("figs", "pdf", "rms_trajectory_error.pdf"), gp, dpi=300)
 end
 
