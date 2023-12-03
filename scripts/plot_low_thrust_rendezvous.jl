@@ -15,6 +15,21 @@ const color_uR = color_main
 const color_uT = color_list[3]
 const color_uN = color_list[4]
 
+# color_mode = "_dark_mode"
+color_mode = "" # normal
+
+if color_mode == "_dark_mode"
+    const color_grid = RGBA(([148, 148, 148, 255] ./ 255)...)
+    const color_text = RGBA(([205, 209, 209, 255] ./ 255)...)
+    const color_axis = color_text
+    const color_bg = RGBA(([1, 25, 39, 255] ./ 255)...)
+else
+    const color_grid = RGBA(([191, 191, 191, 255] ./ 255)...)
+    const color_text = RGBA(([0, 0, 0, 255] ./ 255)...)
+    const color_axis = color_text
+    const color_bg = RGBA(([255, 255, 255, 255] ./ 255)...)
+end
+
 # lineopts = @pgf {no_marks, "very thick", "error bars/y dir=both", "error bars/y explicit"}
 lineopts = @pgf {no_marks, "very thick"}
 
@@ -46,6 +61,11 @@ relative_position_N_km = (d_scale / 1000) * [relative_states_rtn[k][3] for k = 1
 
 p_err = @pgf Axis(
     {
+        "grid style" = {"color" = color_grid},
+        "label style" = {"color" = color_text},
+        "tick label style" = {"color" = color_text},
+        "axis line style" = {"color" = color_axis},
+        "legend style" = {"fill" = color_bg, "text" = color_text, "draw" = color_axis},
         xmajorgrids,
         ymajorgrids,
         xlabel = "Time (orbits)",
@@ -60,6 +80,11 @@ p_err = @pgf Axis(
 
 p_controls = @pgf Axis(
     {
+        "grid style" = {"color" = color_grid},
+        "label style" = {"color" = color_text},
+        "tick label style" = {"color" = color_text},
+        "axis line style" = {"color" = color_axis},
+        "legend style" = {"fill" = color_bg, "text" = color_text, "draw" = color_axis},
         xmajorgrids,
         ymajorgrids,
         xlabel = "Time (orbits)",
@@ -74,6 +99,10 @@ p_controls = @pgf Axis(
 
 p_RT = @pgf Axis(
     {
+        "grid style" = {"color" = color_grid},
+        "label style" = {"color" = color_text},
+        "tick label style" = {"color" = color_text},
+        "axis line style" = {"color" = color_axis},
         xmajorgrids,
         ymajorgrids,
         xlabel = "Tangential (km)",
@@ -84,6 +113,10 @@ p_RT = @pgf Axis(
 
 p_RN = @pgf Axis(
     {
+        "grid style" = {"color" = color_grid},
+        "label style" = {"color" = color_text},
+        "tick label style" = {"color" = color_text},
+        "axis line style" = {"color" = color_axis},
         xmajorgrids,
         ymajorgrids,
         xlabel = "Normal (km)",
@@ -100,11 +133,11 @@ p_RN = @pgf Axis(
 @pgf gp = GroupPlot(groupopts, p_err, p_controls, p_RT, p_RN)
 
 if SAVEAS_PDF
-    pgfsave(joinpath("figs", "pdf", "low_thrust_rendezvous_position_error.pdf"), p_err, dpi=300)
-    pgfsave(joinpath("figs", "pdf", "low_thrust_rendezvous_controls.pdf"), p_controls, dpi=300)
-    pgfsave(joinpath("figs", "pdf", "low_thrust_rendezvous_radial_tangential.pdf"), p_RT, dpi=300)
-    pgfsave(joinpath("figs", "pdf", "low_thrust_rendezvous_radial_normal.pdf"), p_RN, dpi=300)
-    pgfsave(joinpath("figs", "pdf", "low_thrust_rendezvous_quad.pdf"), gp, dpi=300)
+    pgfsave(joinpath("figs", "pdf", "low_thrust_rendezvous_position_error" * color_mode * ".pdf"), p_err, dpi=300)
+    pgfsave(joinpath("figs", "pdf", "low_thrust_rendezvous_controls" * color_mode * ".pdf"), p_controls, dpi=300)
+    pgfsave(joinpath("figs", "pdf", "low_thrust_rendezvous_radial_tangential" * color_mode * ".pdf"), p_RT, dpi=300)
+    pgfsave(joinpath("figs", "pdf", "low_thrust_rendezvous_radial_normal" * color_mode * ".pdf"), p_RN, dpi=300)
+    pgfsave(joinpath("figs", "pdf", "low_thrust_rendezvous_quad" * color_mode * ".pdf"), gp, dpi=300)
 else
     pgfsave(joinpath("figs", "low_thrust_rendezvous.tikz"), gp, include_preamble=false)
 end

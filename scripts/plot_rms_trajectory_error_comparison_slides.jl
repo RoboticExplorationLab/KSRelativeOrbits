@@ -14,6 +14,20 @@ const color_CW = color_list[2]
 const color_YA = color_list[4]
 const color_KGD = color_list[3]
 const color_LIN = color_list[5]
+
+color_mode = "_dark_mode"
+# color_mode = "" # normal
+
+if color_mode == "_dark_mode"
+    const color_grid = RGBA(([148, 148, 148, 255] ./ 255)...)
+    const color_text = RGBA(([205, 209, 209, 255] ./ 255)...)
+    const color_axis = color_text
+else
+    const color_grid = RGBA(([191, 191, 191, 255] ./ 255)...)
+    const color_text = RGBA(([0, 0, 0, 255] ./ 255)...)
+    const color_axis = color_text
+end
+
 # lineopts = @pgf {no_marks, "very thick", "error bars/y dir=both", "error bars/y explicit"}
 lineopts = @pgf {no_marks, "ultra thick"}
 
@@ -75,6 +89,11 @@ pos_err_a_lin = (d_scale / 1000) * pos_err_a_lin
 
 p_M(opacities) = @pgf Axis(
     {
+        "grid style" = {"color" = color_grid},
+        "label style" = {"color" = color_text},
+        "tick label style" = {"color" = color_text},
+        "axis line style" = {"color" = color_axis},
+        label_style = raw"font=\LARGE",
         xmajorgrids,
         ymajorgrids,
         xlabel = L"$\Delta$ Mean Anomaly (deg)",
@@ -98,6 +117,11 @@ p_M_all = p_M([1, 1, 1, 1, 1])
 
 p_i(opacities) = @pgf Axis(
     {
+        "grid style" = {"color" = color_grid},
+        "label style" = {"color" = color_text},
+        "tick label style" = {"color" = color_text},
+        "axis line style" = {"color" = color_axis},
+        label_style = raw"font=\LARGE",
         xmajorgrids,
         ymajorgrids,
         xlabel = L"$\Delta$ Inclination (deg)",
@@ -119,6 +143,11 @@ p_i_all = p_i([1, 1, 1, 1, 1])
 
 p_e(opacities) = @pgf LogLogAxis(
     {
+        "grid style" = {"color" = color_grid},
+        "label style" = {"color" = color_text},
+        "tick label style" = {"color" = color_text},
+        "axis line style" = {"color" = color_axis},
+        label_style = raw"font=\LARGE",
         xmajorgrids,
         ymajorgrids,
         xlabel = L"$\Delta$ Eccentricity",
@@ -139,6 +168,12 @@ p_e_all = p_e([1, 1, 1, 1, 1])
 
 p_a(opacities; withlegend=false) = @pgf Axis(
     {
+        "grid style" = {"color" = color_grid},
+        "label style" = {"color" = color_text},
+        "tick label style" = {"color" = color_text},
+        "axis line style" = {"color" = color_axis},
+        "legend style" = {"fill" = "none", "text" = color_text, "draw" = color_axis},
+        label_style = raw"font=\LARGE",
         xmajorgrids,
         ymajorgrids,
         xlabel = L"$\Delta$ Semi-Major Axis (km)",
@@ -160,27 +195,24 @@ p_a_lin = p_a([1, 1, 1, 1, 0])
 p_a_all = p_a([1, 1, 1, 1, 1])
 p_a_all_legend = p_a([1, 1, 1, 1, 1]; withlegend=true)
 
-pgfsave(joinpath("figs", "pdf", "rms_M_cw.pdf"), p_M_cw, dpi=300)
-pgfsave(joinpath("figs", "pdf", "rms_M_ya.pdf"), p_M_ya, dpi=300)
-pgfsave(joinpath("figs", "pdf", "rms_M_kgd.pdf"), p_M_kgd, dpi=300)
-pgfsave(joinpath("figs", "pdf", "rms_M_lin.pdf"), p_M_lin, dpi=300)
-pgfsave(joinpath("figs", "pdf", "rms_M_all.pdf"), p_M_all, dpi=300)
-
-pgfsave(joinpath("figs", "pdf", "rms_i_cw.pdf"), p_i_cw, dpi=300)
-pgfsave(joinpath("figs", "pdf", "rms_i_ya.pdf"), p_i_ya, dpi=300)
-pgfsave(joinpath("figs", "pdf", "rms_i_kgd.pdf"), p_i_kgd, dpi=300)
-pgfsave(joinpath("figs", "pdf", "rms_i_lin.pdf"), p_i_lin, dpi=300)
-pgfsave(joinpath("figs", "pdf", "rms_i_all.pdf"), p_i_all, dpi=300)
-
-pgfsave(joinpath("figs", "pdf", "rms_e_cw.pdf"), p_e_cw, dpi=300)
-pgfsave(joinpath("figs", "pdf", "rms_e_ya.pdf"), p_e_ya, dpi=300)
-pgfsave(joinpath("figs", "pdf", "rms_e_kgd.pdf"), p_e_kgd, dpi=300)
-pgfsave(joinpath("figs", "pdf", "rms_e_lin.pdf"), p_e_lin, dpi=300)
-pgfsave(joinpath("figs", "pdf", "rms_e_all.pdf"), p_e_all, dpi=300)
-
-pgfsave(joinpath("figs", "pdf", "rms_a_cw.pdf"), p_a_cw, dpi=300)
-pgfsave(joinpath("figs", "pdf", "rms_a_ya.pdf"), p_a_ya, dpi=300)
-pgfsave(joinpath("figs", "pdf", "rms_a_kgd.pdf"), p_a_kgd, dpi=300)
-pgfsave(joinpath("figs", "pdf", "rms_a_lin.pdf"), p_a_lin, dpi=300)
-pgfsave(joinpath("figs", "pdf", "rms_a_all.pdf"), p_a_all, dpi=300)
-pgfsave(joinpath("figs", "png", "rms_a_all_legend.png"), p_a_all_legend, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_M_cw" * color_mode * ".pdf"), p_M_cw, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_M_ya" * color_mode * ".pdf"), p_M_ya, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_M_kgd" * color_mode * ".pdf"), p_M_kgd, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_M_lin" * color_mode * ".pdf"), p_M_lin, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_M_all" * color_mode * ".pdf"), p_M_all, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_i_cw" * color_mode * ".pdf"), p_i_cw, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_i_ya" * color_mode * ".pdf"), p_i_ya, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_i_kgd" * color_mode * ".pdf"), p_i_kgd, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_i_lin" * color_mode * ".pdf"), p_i_lin, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_i_all" * color_mode * ".pdf"), p_i_all, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_e_cw" * color_mode * ".pdf"), p_e_cw, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_e_ya" * color_mode * ".pdf"), p_e_ya, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_e_kgd" * color_mode * ".pdf"), p_e_kgd, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_e_lin" * color_mode * ".pdf"), p_e_lin, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_e_all" * color_mode * ".pdf"), p_e_all, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_a_cw" * color_mode * ".pdf"), p_a_cw, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_a_ya" * color_mode * ".pdf"), p_a_ya, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_a_kgd" * color_mode * ".pdf"), p_a_kgd, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_a_lin" * color_mode * ".pdf"), p_a_lin, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_a_all" * color_mode * ".pdf"), p_a_all, dpi=300)
+pgfsave(joinpath("figs", "pdf", "rms_a_all_legend" * color_mode * ".pdf"), p_a_all_legend, dpi=300)
